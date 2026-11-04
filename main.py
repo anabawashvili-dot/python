@@ -1,59 +1,77 @@
-#1 ინდექსები და Slicing
-word = 'programming'
+# 1. ლუწი თუ კენტი
+number = int(input("Enter number: "))
 
-print(word[0])        
-print(word[-1])       
-print(word[-3])       
-print(word[:4])       
-print(word[-4:])      
-print(word[::2])      
-print(word[::-1])     
+if number % 2 == 0:
+    print(f"{number} is even")
+else:
+    print(f"{number} is odd")
 
 
+    # 2. ასაკობრივი კატეგორია
+age = int(input("Enter age: "))
 
-# 2. ელფოსტის დაშლა
-email = input("Enter email: ")
-
-at_pos = email.index("@")
-username = email[:at_pos]
-domain = email[at_pos + 1:]
-
-dot_pos = domain.index(".")
-first_part = domain[:dot_pos]
-
-print("Username:", username)
-print("Domain:", domain)
-print("First part of domain:", first_part)
-
-
-# 3. ტელეფონის ნომრის გასუფთავება
-
-
-phone = input("Enter phone: ")
-
-cleaned = phone.replace(" ", "").replace("-", "")
-print(cleaned)
+if age < 0:
+    print("Invalid age")
+elif age <= 12:
+    print("Child")
+elif age <= 17:
+    print("Teenager")
+elif age <= 64:
+    print("Adult")
+else:
+    print("Senior")
 
 
 
-# 4. Slug გენერატორი
+    # 3. შეფასების სისტემა
 
 
-title = input("Enter title: ")
+grade = float(input("Enter grade: "))
 
-slug = "-".join(title.lower().split())
-print(slug)
+if grade < 0 or grade > 100:
+    print("Invalid grade")
+elif grade >= 90:
+    print("A")
+elif grade >= 80:
+    print("B")
+elif grade >= 70:
+    print("C")
+elif grade >= 60:
+    print("D")
+elif grade >= 50:
+    print("E")
+else:
+    print("F")
 
-# 5. სტუდენტის ბარათი
+# 4. დიახ / არა
 
-name = input("Enter name: ")
-age = input("Enter age: ")
-city = input("Enter city: ")
-language = input("Enter favorite programming language: ")
 
-print("=" * 25)
-print(f"Name: {name.title()}")
-print(f"Age: {age}")
-print(f"City: {city.title()}")
-print(f"Favorite language: {language.upper()}")
-print("=" * 25)
+answer = input("Do you like Python? (yes/no) ").strip().lower()
+
+if answer == "yes":
+    print("Great!")
+elif answer == "no":
+    print("Maybe you will like it later")
+else:
+    print("Please answer yes or no")
+
+
+    # 5. კალკულატორი
+
+first = float(input("Enter first number: "))
+operation = input("Enter operation: ")
+second = float(input("Enter second number: "))
+
+if operation == "+":
+    print(f"{first} + {second} = {first + second}")
+elif operation == "-":
+    print(f"{first} - {second} = {first - second}")
+elif operation == "*":
+    print(f"{first} * {second} = {first * second}")
+elif operation == "/":
+    print(f"{first} / {second} = {first / second}")
+else:
+    print("Unknown operation")
+
+
+    
