@@ -1,77 +1,58 @@
-# 1. ლუწი თუ კენტი
-number = int(input("Enter number: "))
-
-if number % 2 == 0:
-    print(f"{number} is even")
-else:
-    print(f"{number} is odd")
-
-
-    # 2. ასაკობრივი კატეგორია
+#1
 age = int(input("Enter age: "))
+money = int(input("Enter money: "))
 
-if age < 0:
-    print("Invalid age")
-elif age <= 12:
-    print("Child")
-elif age <= 17:
-    print("Teenager")
-elif age <= 64:
-    print("Adult")
+if age >= 12 and money >= 15:
+    print("Enjoy the movie")
 else:
-    print("Senior")
+    print("Access denied")
 
+# 2
 
+year = int(input("Enter year: "))
 
-    # 3. შეფასების სისტემა
-
-
-grade = float(input("Enter grade: "))
-
-if grade < 0 or grade > 100:
-    print("Invalid grade")
-elif grade >= 90:
-    print("A")
-elif grade >= 80:
-    print("B")
-elif grade >= 70:
-    print("C")
-elif grade >= 60:
-    print("D")
-elif grade >= 50:
-    print("E")
+if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+    print("Leap year")
 else:
-    print("F")
-
-# 4. დიახ / არა
+    print("Not a leap year")
 
 
-answer = input("Do you like Python? (yes/no) ").strip().lower()
+# 3
+correct_pin = 1234
+balance = 500
 
-if answer == "yes":
-    print("Great!")
-elif answer == "no":
-    print("Maybe you will like it later")
+pin = int(input("Enter PIN: "))
+amount = int(input("Enter amount: "))
+
+if pin != correct_pin:
+    print("Wrong PIN")
 else:
-    print("Please answer yes or no")
+    if amount <= 0:
+        print("Invalid amount")
+    elif amount > balance:
+        print("Not enough money")
+    else:
+        balance -= amount
+        print(f"Take your money: {amount}")
+        print(f"New balance: {balance}")
 
+        # 4
+try:
+    name = input('Enter name: ')
+    age = int(input('Enter age: '))
+    number = int(input('Enter a number to divide 100 by: '))
 
-    # 5. კალკულატორი
+    print('100 /', number, '=', 100 / number)
+    print(f'Hello, {name}! Next year you will be {age + 1} years old.')
 
-first = float(input("Enter first number: "))
-operation = input("Enter operation: ")
-second = float(input("Enter second number: "))
-
-if operation == "+":
-    print(f"{first} + {second} = {first + second}")
-elif operation == "-":
-    print(f"{first} - {second} = {first - second}")
-elif operation == "*":
-    print(f"{first} * {second} = {first * second}")
-elif operation == "/":
-    print(f"{first} / {second} = {first / second}")
-else:
-    print("Unknown operation")
+except ValueError:
+    print('Invalid input')
+except ZeroDivisionError:
+    print('Cannot divide by zero')
+except TypeError:
+    print('Cannot join text and number')
+except Exception as e:
+    print(e)
 
 
     
