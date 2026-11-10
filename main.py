@@ -1,58 +1,70 @@
-#1
-age = int(input("Enter age: "))
-money = int(input("Enter money: "))
+# 1. ლუწი რიცხვები
 
-if age >= 12 and money >= 15:
-    print("Enjoy the movie")
+i = 1
+while i <= 50:
+    if i % 2 == 0:
+        print(i)
+    i += 1
+
+
+# 2. ჯამი 1-დან N-მდე
+
+n = int(input("Enter N: "))
+total = 0
+i = 1
+while i <= n:
+    total += i
+    i += 1
+print("Sum:", total)
+
+
+# 3. ფაქტორიალი
+
+n = int(input("Enter n: "))
+result = 1
+i = 1
+while i <= n:
+    result *= i
+    i += 1
+print(f"{n}! = {result}")
+
+
+
+# 4. საშუალო არითმეტიკული
+
+count = 0
+total = 0
+
+num = float(input("Enter a number: "))
+while num != 0:
+    count += 1
+    total += num
+    num = float(input("Enter a number: "))
+
+print("Count:", count)
+print("Sum:", total)
+if count > 0:
+    print("Average:", total / count)
 else:
-    print("Access denied")
-
-# 2
-
-year = int(input("Enter year: "))
-
-if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
-    print("Leap year")
-else:
-    print("Not a leap year")
+    print("Average: no numbers were entered")
 
 
-# 3
-correct_pin = 1234
-balance = 500
+    # 5. გამოცნობის თამაში
 
-pin = int(input("Enter PIN: "))
-amount = int(input("Enter amount: "))
+secret = 7
+attempts = 0
+guessed = False
 
-if pin != correct_pin:
-    print("Wrong PIN")
-else:
-    if amount <= 0:
-        print("Invalid amount")
-    elif amount > balance:
-        print("Not enough money")
+while attempts < 5 and not guessed:
+    guess = int(input("Guess: "))
+    attempts += 1
+    if guess > secret:
+        print("Too high")
+    elif guess < secret:
+        print("Too low")
     else:
-        balance -= amount
-        print(f"Take your money: {amount}")
-        print(f"New balance: {balance}")
+        print("You win!")
+        guessed = True
 
-        # 4
-try:
-    name = input('Enter name: ')
-    age = int(input('Enter age: '))
-    number = int(input('Enter a number to divide 100 by: '))
-
-    print('100 /', number, '=', 100 / number)
-    print(f'Hello, {name}! Next year you will be {age + 1} years old.')
-
-except ValueError:
-    print('Invalid input')
-except ZeroDivisionError:
-    print('Cannot divide by zero')
-except TypeError:
-    print('Cannot join text and number')
-except Exception as e:
-    print(e)
-
-
-    
+if not guessed:
+    print("You lose! The number was", secret)
