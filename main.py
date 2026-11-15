@@ -1,77 +1,72 @@
-# 1. ლუწი თუ კენტი
+# 1. for და range()
 
-number = int(input("Enter number: "))
+# 1) კვადრატები 1-დან 10-მდე
+for i in range(1, 11):
+    print(f"{i} squared = {i ** 2}")
 
-if number % 2 == 0:
-    print(f"{number} is even")
-else:
-    print(f"{number} is odd")
-# 2. ასაკობრივი კატეგორია
 
-age = int(input("Enter age: "))
+    # 2) უკუთვლა 10-დან 1-მდე
+for i in range(10, 0, -1):
+    print(i)
+print("Go!")
 
-if age < 0:
-    print("Invalid age")
-elif age <= 12:
-    print("Child")
-elif age <= 17:
-    print("Teenager")
-elif age <= 64:
-    print("Adult")
-else:
-   print("Senior")
 
-# 3. შეფასების სისტემა
+# 3) 1-დან 100-მდე ლუწების ჯამი
+total = 0
+for i in range(2, 101, 2):
+    total += i
+print(total)  
 
-grade = float(input("Enter grade: "))
 
-if grade < 0 or grade > 100:
-    print("Invalid grade")
-elif grade >= 90:
-    print("A")
-elif grade >= 80:
-    print("B")
-elif grade >= 70:
-    print("C")
-elif grade >= 60:
-    print("D")
-elif grade >= 50:
-    print("E")
-else:
-    print("F")
+# 2. ხმოვნების დათვლა
+
+text = input("Enter text: ").lower()
+count = 0
+for char in text:
+    if char in "aeiou":
+        count += 1
+print("Vowels:", count)
 
 
 
+# 3. რიცხვების ჯამი (continue)
+
+total = 0
+count = 0
+
+while True:
+    value = input("Enter a number: ")
+    if value == "stop":
+        break
+    number = int(value)
+    if number < 0:
+        print("Negative numbers are not allowed")
+        continue
+    total += number
+    count += 1
+
+print("Sum:", total)
+print("Count:", count)
 
 
-# 4. დიახ / არა
+# 4. სამკუთხედი (ჩადგმული ციკლები)
 
-answer = input("Do you like Python? (yes/no) ").strip().lower()
+n = int(input("Enter n: "))
 
-if answer == "yes":
-    print("Great!")
-elif answer == "no":
-    print("Maybe you will like it later")
-else:
-    print("Please answer yes or no")
+# ჩვეულებრივი სამკუთხედი
+for i in range(1, n + 1):
+    for j in range(i):
+        print('*', end=' ')
+    print()
+
+# შებრუნებული სამკუთხედი
+for i in range(n, 0, -1):
+    for j in range(i):
+        print('*', end=' ')xx
+    print()
 
 
-# 5. კალკულატორი
 
-first = float(input("Enter first number: "))
-operation = input("Enter operation: ").strip()
-second = float(input("Enter second number: "))
 
-if operation == "+":
-    print(f"{first} + {second} = {first + second}")
-elif operation == "-":
-    print(f"{first} - {second} = {first - second}")
-elif operation == "*":
-    print(f"{first} * {second} = {first * second}")
-elif operation == "/":
-    if second == 0:
-        print("Cannot divide by zero")
-    else:
-        print(f"{first} / {second} = {first / second}")
-else:
-    print("Unknown operation")
+
+
