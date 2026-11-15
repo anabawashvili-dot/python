@@ -1,67 +1,77 @@
-# 1. საყიდლების სია
+# 1. ლუწი თუ კენტი
 
-shopping = ['milk', 'bread', 'eggs']
+number = int(input("Enter number: "))
 
-shopping.append('cheese')
-print(shopping)       
+if number % 2 == 0:
+    print(f"{number} is even")
+else:
+    print(f"{number} is odd")
+# 2. ასაკობრივი კატეგორია
 
-shopping.insert(0, 'apples')
-print(shopping)      
-shopping[-1] = 'butter'
-print(shopping)        
+age = int(input("Enter age: "))
 
-shopping.extend(['tea', 'coffee'])
-print(shopping)        
+if age < 0:
+    print("Invalid age")
+elif age <= 12:
+    print("Child")
+elif age <= 17:
+    print("Teenager")
+elif age <= 64:
+    print("Adult")
+else:
+   print("Senior")
 
-shopping.remove('bread')
-print(shopping)        
-removed = shopping.pop(1)
-print(shopping)       
-print("Removed:", removed)   
+# 3. შეფასების სისტემა
 
+grade = float(input("Enter grade: "))
 
-#2. გამოცდის ქულები
-
-scores = [85, 92, 78, 92, 65, 88, 92]
-
-asc_scores = sorted(scores)                
-
-print("Count of 92:", scores.count(92))
-print("Index of 78:", scores.index(78))
-print("Ascending:", asc_scores)
-print("Descending:", desc_scores)
-print(f"Highest: {asc_scores[-1]}, Lowest: {asc_scores[0]}")
-print("Original:", scores)
-
-#3. მატრიცა
-
-matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
-print("Rows:", len(matrix))                
-print("Last row:", matrix[-1])              
-print("6 (positive):", matrix[1][2])        
-print("6 (negative):", matrix[-2][-1])      
-print("7:", matrix[-1][-3])                 
-
-matrix[1][1] = 50
-print(matrix)                            
+if grade < 0 or grade > 100:
+    print("Invalid grade")
+elif grade >= 90:
+    print("A")
+elif grade >= 80:
+    print("B")
+elif grade >= 70:
+    print("C")
+elif grade >= 60:
+    print("D")
+elif grade >= 50:
+    print("E")
+else:
+    print("F")
 
 
-# 4. სიის შევსება while-ით
 
-numbers = []
 
-while True:
-    value = input("Enter a number: ")
-    if value == "stop":
-        break
-    try:
-        numbers.append(int(value))
-    except ValueError:
-        print("Please enter a valid number or 'stop'.")
 
-print("List:", numbers)
-print("Count:", len(numbers))
-if numbers:
-    print(f"First: {numbers[0]}, Last: {numbers[-1]}")
-    print("Descending:", sorted(numbers, reverse=True))
+# 4. დიახ / არა
+
+answer = input("Do you like Python? (yes/no) ").strip().lower()
+
+if answer == "yes":
+    print("Great!")
+elif answer == "no":
+    print("Maybe you will like it later")
+else:
+    print("Please answer yes or no")
+
+
+# 5. კალკულატორი
+
+first = float(input("Enter first number: "))
+operation = input("Enter operation: ").strip()
+second = float(input("Enter second number: "))
+
+if operation == "+":
+    print(f"{first} + {second} = {first + second}")
+elif operation == "-":
+    print(f"{first} - {second} = {first - second}")
+elif operation == "*":
+    print(f"{first} * {second} = {first * second}")
+elif operation == "/":
+    if second == 0:
+        print("Cannot divide by zero")
+    else:
+        print(f"{first} / {second} = {first / second}")
+else:
+    print("Unknown operation")
