@@ -1,72 +1,61 @@
-# 1. for და range()
-
-# 1) კვადრატები 1-დან 10-მდე
-for i in range(1, 11):
-    print(f"{i} squared = {i ** 2}")
-
-
-    # 2) უკუთვლა 10-დან 1-მდე
-for i in range(10, 0, -1):
-    print(i)
-print("Go!")
-
-
-# 3) 1-დან 100-მდე ლუწების ჯამი
+# 1. ლუწი რიცხვები
+i = 1
+while i <= 50:
+    if i % 2 == 0:
+        print(i)
+    i += 1
+# 2. ჯამი 1-დან N-მდე
+n = int(input("Enter N: "))
 total = 0
-for i in range(2, 101, 2):
+i = 1
+while i <= n:
     total += i
-print(total)  
-
-
-# 2. ხმოვნების დათვლა
-
-text = input("Enter text: ").lower()
-count = 0
-for char in text:
-    if char in "aeiou":
-        count += 1
-print("Vowels:", count)
-
-
-
-# 3. რიცხვების ჯამი (continue)
-
-total = 0
-count = 0
-
-while True:
-    value = input("Enter a number: ")
-    if value == "stop":
-        break
-    number = int(value)
-    if number < 0:
-        print("Negative numbers are not allowed")
-        continue
-    total += number
-    count += 1
-
+    i += 1
 print("Sum:", total)
-print("Count:", count)
-
-
-# 4. სამკუთხედი (ჩადგმული ციკლები)
-
+# 3. ფაქტორიალი
 n = int(input("Enter n: "))
+result = 1
+i = 1
+while i <= n:
+    result *= i
+    i += 1
+print(f"{n}! = {result}")
 
-# ჩვეულებრივი სამკუთხედი
-for i in range(1, n + 1):
-    for j in range(i):
-        print('*', end=' ')
-    print()
+# 4. საშუალო არითმეტიკული
 
-# შებრუნებული სამკუთხედი
-for i in range(n, 0, -1):
-    for j in range(i):
-        print('*', end=' ')xx
-    print()
+count = 0
+total = 0
 
+number = int(input("Enter a number: "))
+while number != 0:
+    count += 1
+    total += number
+    number = int(input("Enter a number: "))
 
+if count > 0:
+    print("Count:", count)
+    print("Sum:", total)
+    print("Average:", total / count)
+else:
+    print("No numbers were entered.")
 
+# 5. გამოცნობის თამაში
 
+secret = 7
+attempts = 0
+guessed = False
 
+while attempts < 5 and not guessed:
+    guess = int(input("Guess: "))
+    attempts += 1
 
+    if guess > secret:
+        print("Too high")
+    elif guess < secret:
+        print("Too low")
+    else:
+        print("You win!")
+        guessed = True
+
+if not guessed:
+    print("You lose! The number was", secret)
