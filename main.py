@@ -1,68 +1,67 @@
-# 1. ლუწი რიცხვები
+# 1. საყიდლების სია
 
-i = 1
-while i <= 50:
-    if i % 2 == 0:
-        print(i)
-    i += 1
-# 2. ჯამი 1-დან N-მდე
+shopping = ['milk', 'bread', 'eggs']
 
-n = int(input("Enter N: "))
-total = 0
-i = 1
-while i <= n:
-    total += i
-    i += 1
-print("Sum:", total)
-# 3. ფაქტორიალი
+shopping.append('cheese')
+print(shopping)       
 
-n = int(input("Enter n: "))
-result = 1
-i = 1
-while i <= n:
-    result *= i
-    i += 1
-print(f"{n}! = {result}")
+shopping.insert(0, 'apples')
+print(shopping)      
+shopping[-1] = 'butter'
+print(shopping)        
+
+shopping.extend(['tea', 'coffee'])
+print(shopping)        
+
+shopping.remove('bread')
+print(shopping)        
+removed = shopping.pop(1)
+print(shopping)       
+print("Removed:", removed)   
 
 
+#2. გამოცდის ქულები
 
-# 4. საშუალო არითმეტიკული
+scores = [85, 92, 78, 92, 65, 88, 92]
 
-count = 0
-total = 0
+asc_scores = sorted(scores)                
 
-number = float(input("Enter a number: "))
-while number != 0:
-    count += 1
-    total += number
-    number = float(input("Enter a number: "))
+print("Count of 92:", scores.count(92))
+print("Index of 78:", scores.index(78))
+print("Ascending:", asc_scores)
+print("Descending:", desc_scores)
+print(f"Highest: {asc_scores[-1]}, Lowest: {asc_scores[0]}")
+print("Original:", scores)
 
-if count > 0:
-    print("Count:", count)
-    print("Sum:", total)
-    print("Average:", total / count)
-else:
-    print("No numbers were entered.")
+#3. მატრიცა
+
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+print("Rows:", len(matrix))                
+print("Last row:", matrix[-1])              
+print("6 (positive):", matrix[1][2])        
+print("6 (negative):", matrix[-2][-1])      
+print("7:", matrix[-1][-3])                 
+
+matrix[1][1] = 50
+print(matrix)                            
 
 
+# 4. სიის შევსება while-ით
 
-# 5. გამოცნობის თამაში
+numbers = []
 
-secret = 7
-attempts = 0
-guessed = False
+while True:
+    value = input("Enter a number: ")
+    if value == "stop":
+        break
+    try:
+        numbers.append(int(value))
+    except ValueError:
+        print("Please enter a valid number or 'stop'.")
 
-while attempts < 5 and not guessed:
-    guess = int(input("Guess: "))
-    attempts += 1
-
-    if guess > secret:
-        print("Too high")
-    elif guess < secret:
-        print("Too low")
-    else:
-        print("You win!")
-        guessed = True
-
-if not guessed:
-    print("You lose! The number was", secret)
+print("List:", numbers)
+print("Count:", len(numbers))
+if numbers:
+    print(f"First: {numbers[0]}, Last: {numbers[-1]}")
+    print("Descending:", sorted(numbers, reverse=True))
