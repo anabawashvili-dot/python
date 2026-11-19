@@ -1,90 +1,94 @@
-# ამოცანა 1. დუბლიკატების მოშორება
-
-numbers = [4, 8, 15, 8, 16, 23, 4, 42, 15, 8]
-
-unique = list(set(numbers))
-print(unique)                 
-print(len(unique))            
-print(23 in set(numbers))     
+# ამოცანა 1. ბილეთების ბეჭდვა
+def print_ticket(passenger, destination, travel_class):
+    print('--- TICKET ---')
+    print(f'Passenger: {passenger}')
+    print(f'Destination: {destination}')
+    print(f'Class: {travel_class}')
 
 
+# მხოლოდ პოზიციური არგუმენტები
+print_ticket('Nika', 'Batumi', 'Economy')
 
-# ამოცანა 2. სეტების ოპერაციები
+# მხოლოდ keyword არგუმენტები
+print_ticket(passenger='Mari', destination='Kutaisi', travel_class='Business')
 
-ana = {'python', 'java', 'c', 'sql'}
-nika = {'python', 'javascript', 'sql', 'go'}
+# პოზიციური + keyword (მხოლოდ კლასი არის keyword)
+print_ticket('Luka', 'Batumi', travel_class='Economy')
+# ამოცანა 2. ტემპერატურა
 
-# ოპერატორებით
-print(ana | nika)   # ყველა ენა, რომელიც ერთმა მაინც იცის
-print(ana & nika)   # {'python', 'sql'}
-print(ana - nika)   # {'java', 'c'}
-
-# მეთოდებით
-print(ana.union(nika))
-print(ana.intersection(nika))
-print(ana.difference(nika))
-
-# დამატებით: სიმეტრიული სხვაობა (მხოლოდ ერთმა იცის)
-print(ana ^ nika)
-print(ana.symmetric_difference(nika))
-# ამოცანა 3. კენჭისყრა
-
-votes = ['Ana', 'Nika', 'Ana', 'Mari', 'Nika', 'Ana', 'Mari', 'Ana']
-
-counts = {}
-for name in votes:
-    if name in counts:
-        counts[name] += 1
-    else:
-        counts[name] = 1
-
-for name, count in counts.items():
-    print(f"{name}: {count}")
+def celsius_to_fahrenheit(celsius):
+    return celsius * 9 / 5 + 32
 
 
+def is_warm(celsius, limit=20):
+    return celsius > limit
 
-# ამოცანა 4. მაღაზიის მარაგი
 
-inventory = {
-    'laptop': {'price': 2500, 'quantity': 5},
-    'mouse': {'price': 40, 'quantity': 0},
-    'keyboard': {'price': 120, 'quantity': 12},
-    'monitor': {'price': 800, 'quantity': 0},
-}
+f0 = celsius_to_fahrenheit(0)
+f37 = celsius_to_fahrenheit(37)
+f100 = celsius_to_fahrenheit(100)
 
-# 1. მარაგის საერთო ღირებულება
-total = 0
-for item in inventory.values():
-    total += item['price'] * item['quantity']
-print("საერთო ღირებულება:", total)   # 13940
+print(f'0C = {f0:.1f}F')
+print(f'37C = {f37:.1f}F')
+print(f'100C = {f100:.1f}F')
 
-# 2. ამოწურული პროდუქტები
-print("ამოწურულია:")
-for name, item in inventory.items():
-    if item['quantity'] == 0:
-        print(name)
+print(is_warm(25))                     
+print(is_warm(25, 30))                  
+print(is_warm(limit=10, celsius=15))    
+# ამოცანა 3. რიცხვების ანალიზი
 
-# 3. შეძენა
-name = input("პროდუქტის სახელი: ")
-qty = int(input("რაოდენობა: "))
+def analyze_numbers(numbers):
+    return min(numbers), max(numbers), sum(numbers) / len(numbers)
 
-if name not in inventory:
-    print("პროდუქტი ვერ მოიძებნა")
-elif inventory[name]['quantity'] < qty:
-    print("მარაგი არასაკმარისია")
-else:
-    inventory[name]['quantity'] -= qty
-    cost = inventory[name]['price'] * qty
-    print(f"შეძენის ღირებულება: {cost}")
 
-# ამოცანა 5. Comprehension-ები
+data = [12, 7, 25, 3, 18]
 
-words = ['python', 'java', 'ai', 'sql', 'go', 'python']
+smallest, largest, average = analyze_numbers(data)
+print(f'Min: {smallest}, Max: {largest}, Average: {average}')
+# Min: 3, Max: 25, Average: 13.0
 
-squares = [x ** 2 for x in range(1, 11)]
-lengths = {w: len(w) for w in words}
-first_letters = {w[0] for w in words}
+result = analyze_numbers(data)
+print(result)
+# (3, 25, 13.0)
 
-print(squares)        
-print(lengths)        
-print(first_letters)  
+
+
+# ამოცანა 4. ჯგუფის სია
+
+
+
+
+def add_student(name, group=None):
+    if group is None:
+        group = []
+    if name not in group:
+        group.append(name)
+    return group
+
+
+group_a = add_student('Ana')
+group_b = add_student('Nika')
+group_a = add_student('Mari', group_a)
+group_a = add_student('Ana', group_a)
+
+print(group_a)  # ['Ana', 'Mari']
+print(group_b)  # ['Nika']
+# ამოცანა 5. პაროლის სიძლიერე
+
+def check_password(password):
+    if len(password) < 6:
+        return 'Too short'
+    if password.isdigit():
+        return 'Weak'
+    has_digit = any(ch.isdigit() for ch in password)
+    has_letter = any(ch.isalpha() for ch in password)
+    if not has_digit or not has_letter:
+        return 'Medium'
+    return 'Strong'
+
+
+passwords = ['abc', '1234567', 'qwerty', 'python3', 'Tbilisi2024']
+
+for password in passwords:
+    print(f'{password} -> {check_password(password)}')
+
