@@ -1,67 +1,90 @@
-# 1. საყიდლების სია
+# ამოცანა 1. დუბლიკატების მოშორება
 
-shopping = ['milk', 'bread', 'eggs']
+numbers = [4, 8, 15, 8, 16, 23, 4, 42, 15, 8]
 
-shopping.append('cheese')
-print(shopping)       
-
-shopping.insert(0, 'apples')
-print(shopping)      
-shopping[-1] = 'butter'
-print(shopping)        
-
-shopping.extend(['tea', 'coffee'])
-print(shopping)        
-
-shopping.remove('bread')
-print(shopping)        
-removed = shopping.pop(1)
-print(shopping)       
-print("Removed:", removed)   
+unique = list(set(numbers))
+print(unique)                 
+print(len(unique))            
+print(23 in set(numbers))     
 
 
-#2. გამოცდის ქულები
 
-scores = [85, 92, 78, 92, 65, 88, 92]
+# ამოცანა 2. სეტების ოპერაციები
 
-asc_scores = sorted(scores)                
+ana = {'python', 'java', 'c', 'sql'}
+nika = {'python', 'javascript', 'sql', 'go'}
 
-print("Count of 92:", scores.count(92))
-print("Index of 78:", scores.index(78))
-print("Ascending:", asc_scores)
-print("Descending:", desc_scores)
-print(f"Highest: {asc_scores[-1]}, Lowest: {asc_scores[0]}")
-print("Original:", scores)
+# ოპერატორებით
+print(ana | nika)   # ყველა ენა, რომელიც ერთმა მაინც იცის
+print(ana & nika)   # {'python', 'sql'}
+print(ana - nika)   # {'java', 'c'}
 
-#3. მატრიცა
+# მეთოდებით
+print(ana.union(nika))
+print(ana.intersection(nika))
+print(ana.difference(nika))
 
-matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# დამატებით: სიმეტრიული სხვაობა (მხოლოდ ერთმა იცის)
+print(ana ^ nika)
+print(ana.symmetric_difference(nika))
+# ამოცანა 3. კენჭისყრა
 
-print("Rows:", len(matrix))                
-print("Last row:", matrix[-1])              
-print("6 (positive):", matrix[1][2])        
-print("6 (negative):", matrix[-2][-1])      
-print("7:", matrix[-1][-3])                 
+votes = ['Ana', 'Nika', 'Ana', 'Mari', 'Nika', 'Ana', 'Mari', 'Ana']
 
-matrix[1][1] = 50
-print(matrix)                            
+counts = {}
+for name in votes:
+    if name in counts:
+        counts[name] += 1
+    else:
+        counts[name] = 1
+
+for name, count in counts.items():
+    print(f"{name}: {count}")
 
 
-# 4. სიის შევსება while-ით
 
-numbers = []
+# ამოცანა 4. მაღაზიის მარაგი
 
-while True:
-    value = input("Enter a number: ")
-    if value == "stop":
-        break
-    try:
-        numbers.append(int(value))
-    except ValueError:
-        print("Please enter a valid number or 'stop'.")
+inventory = {
+    'laptop': {'price': 2500, 'quantity': 5},
+    'mouse': {'price': 40, 'quantity': 0},
+    'keyboard': {'price': 120, 'quantity': 12},
+    'monitor': {'price': 800, 'quantity': 0},
+}
 
-print("List:", numbers)
-print("Count:", len(numbers))
-if numbers:
-    print(f"First: {numbers[0]}, Last: {numbers[-1]}")
-    print("Descending:", sorted(numbers, reverse=True))
+# 1. მარაგის საერთო ღირებულება
+total = 0
+for item in inventory.values():
+    total += item['price'] * item['quantity']
+print("საერთო ღირებულება:", total)   # 13940
+
+# 2. ამოწურული პროდუქტები
+print("ამოწურულია:")
+for name, item in inventory.items():
+    if item['quantity'] == 0:
+        print(name)
+
+# 3. შეძენა
+name = input("პროდუქტის სახელი: ")
+qty = int(input("რაოდენობა: "))
+
+if name not in inventory:
+    print("პროდუქტი ვერ მოიძებნა")
+elif inventory[name]['quantity'] < qty:
+    print("მარაგი არასაკმარისია")
+else:
+    inventory[name]['quantity'] -= qty
+    cost = inventory[name]['price'] * qty
+    print(f"შეძენის ღირებულება: {cost}")
+
+# ამოცანა 5. Comprehension-ები
+
+words = ['python', 'java', 'ai', 'sql', 'go', 'python']
+
+squares = [x ** 2 for x in range(1, 11)]
+lengths = {w: len(w) for w in words}
+first_letters = {w[0] for w in words}
+
+print(squares)        
+print(lengths)        
+print(first_letters)  
